@@ -14,6 +14,10 @@ dependencies {
     // ProjectGen
     implementation(platform("io.micronaut.projectgen:micronaut-projectgen-bom:0.0.1"))
     implementation("io.micronaut.projectgen:micronaut-projectgen-http-server")
+
+    // Views
+    implementation("io.micronaut.views:micronaut-views-thymeleaf")
+
     // Serialization
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
