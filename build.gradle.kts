@@ -25,14 +25,14 @@ dependencies {
     // Validation
     annotationProcessor("io.micronaut.validation:micronaut-validation-processor")
     implementation("io.micronaut.validation:micronaut-validation")
+
     // Route Validation
     annotationProcessor("io.micronaut:micronaut-http-validation")
 
     // Management
     implementation("io.micronaut:micronaut-management")
 
-    runtimeOnly("ch.qos.logback:logback-classic")
-    testImplementation("io.micronaut:micronaut-http-client")
+    runtimeOnly("ch.qos.logback:logback-classic")    testImplementation("io.micronaut:micronaut-http-client")
 }
 
 
