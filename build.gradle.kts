@@ -11,6 +11,9 @@ repositories {
 }
 
 dependencies {
+    // ProjectGen
+    implementation(platform("io.micronaut.projectgen:micronaut-projectgen-bom:0.0.1"))
+    implementation("io.micronaut.projectgen:micronaut-projectgen-http-server")
     // Serialization
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
@@ -18,7 +21,6 @@ dependencies {
     // Validation
     annotationProcessor("io.micronaut.validation:micronaut-validation-processor")
     implementation("io.micronaut.validation:micronaut-validation")
-
     // Route Validation
     annotationProcessor("io.micronaut:micronaut-http-validation")
 
