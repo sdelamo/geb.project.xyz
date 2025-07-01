@@ -17,7 +17,7 @@ dependencies {
 
     // Validation
     annotationProcessor("io.micronaut.validation:micronaut-validation-processor")
-    implementation("io.micronaut.validation:micronaut-validation-jackson")
+    implementation("io.micronaut.validation:micronaut-validation")
 
     // Route Validation
     annotationProcessor("io.micronaut:micronaut-http-validation")
@@ -52,4 +52,3 @@ micronaut {
 tasks.named<io.micronaut.gradle.docker.NativeImageDockerfile>("dockerfileNative") {
     jdkVersion = "24"
 }
-
