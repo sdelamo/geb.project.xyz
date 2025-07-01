@@ -14,15 +14,13 @@ dependencies {
     annotationProcessor("io.micronaut:micronaut-http-validation")
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
-    compileOnly("io.micronaut:micronaut-http-client")
     runtimeOnly("ch.qos.logback:logback-classic")
     testImplementation("io.micronaut:micronaut-http-client")
 }
 
 
 application {
-    mainClass = "xyz.projectgen.geb.Application"
-}
+    mainClass = "xyz.projectgen.geb.Application"}
 java {
     sourceCompatibility = JavaVersion.toVersion("24")
     targetCompatibility = JavaVersion.toVersion("24")
