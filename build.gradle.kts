@@ -11,9 +11,17 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor("io.micronaut:micronaut-http-validation")
+    // Serialization
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
+
+    // Validation
+    annotationProcessor("io.micronaut.validation:micronaut-validation-processor")
+    implementation("io.micronaut.validation:micronaut-validation-jackson")
+
+    // Route Validation
+    annotationProcessor("io.micronaut:micronaut-http-validation")
+
     // Management
     implementation("io.micronaut:micronaut-management")
 
@@ -44,5 +52,4 @@ micronaut {
 tasks.named<io.micronaut.gradle.docker.NativeImageDockerfile>("dockerfileNative") {
     jdkVersion = "24"
 }
-
 
