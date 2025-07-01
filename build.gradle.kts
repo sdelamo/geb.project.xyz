@@ -14,6 +14,9 @@ dependencies {
     annotationProcessor("io.micronaut:micronaut-http-validation")
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
+    // Management
+    implementation("io.micronaut:micronaut-management")
+
     runtimeOnly("ch.qos.logback:logback-classic")
     testImplementation("io.micronaut:micronaut-http-client")
 }
@@ -28,7 +31,6 @@ java {
 
 
 graalvmNative.toolchainDetection = false
-
 micronaut {
     runtime("netty")
     testRuntime("junit5")
