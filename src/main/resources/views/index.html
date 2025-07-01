@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geb Project Generator</title>
+    <link rel="stylesheet" href="/assets/stylesheets/screen.css">
+</head>
+<body>
+    <img src="/assets/images/logo.svg" alt="Geb" width="150"/>
+    <form action="/api/v1/download/zip" method="POST">
+        <fieldset>
+            <input type="hidden" name="name" value="geb-demo"/>
+            <input type="hidden" name="packageName" value="com.example"/>
+            <input type="hidden" name="group" value="com.example"/>
+            <input type="hidden" name="artifact" value="geb-demo"/>
+            <input type="hidden" name="version" value="1.0.0"/>
+            <input type="hidden" name="build" value="GRADLE"/>
+            <input type="hidden" name="gradleDsl" value="GROOVY"/>
+            <div>
+                <label>Test Framework: </label>
+                <label for="testFrameworkJunit5">JUnit 5</label>
+                <input id="testFrameworkJunit5" type="radio" name="testFramework" value="JUNIT" checked="checked"/>
+                <label for="testFrameworkSpock">Spock</label><input id="testFrameworkSpock" type="radio" name="testFramework" value="SPOCK">
+            </div>
+            <div>
+                <label>Browser Driver: </label>
+                <label for="driverFirefox">Firefox</label><input id="driverFirefox" type="checkbox" name="driver" value="FIREFOX"/>
+                <label for="driverChrome">Chrome</label><input id="driverChrome" type="checkbox" name="driver" value="CHROME">
+            </div>
+            <input type="hidden" name="java" value="21"/>
+            <input type="submit" value="Download" />
+        </fieldset>
+    </form>
+</body>
+</html>
