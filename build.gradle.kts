@@ -37,7 +37,8 @@ dependencies {
 
 
 application {
-    mainClass = "xyz.projectgen.geb.Application"}
+    mainClass = "xyz.projectgen.geb.Application"
+}
 java {
     sourceCompatibility = JavaVersion.toVersion("24")
     targetCompatibility = JavaVersion.toVersion("24")
