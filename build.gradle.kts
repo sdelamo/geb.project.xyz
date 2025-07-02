@@ -8,9 +8,14 @@ repositories {
     mavenCentral()
 }
 dependencies {
+    // SourceGen
+    annotationProcessor("io.micronaut.sourcegen:micronaut-sourcegen-generator-java")
+    implementation("io.micronaut.sourcegen:micronaut-sourcegen-annotations")
+
     // ProjectGen
     implementation(platform("io.micronaut.projectgen:micronaut-projectgen-bom:0.0.1"))
     implementation("io.micronaut.projectgen:micronaut-projectgen-http-server")
+    testImplementation("io.micronaut.projectgen:micronaut-projectgen-test")
 
     // Views
     implementation("io.micronaut.views:micronaut-views-thymeleaf")

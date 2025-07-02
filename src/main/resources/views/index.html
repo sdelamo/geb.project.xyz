@@ -1,34 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Geb Project Generator</title>
-    <link rel="stylesheet" href="/assets/stylesheets/screen.css">
+    <link rel="stylesheet" th:href="@{/assets/stylesheets/screen.css}">
 </head>
 <body>
-    <img src="/assets/images/logo.svg" alt="Geb" width="150"/>
-    <form action="/api/v1/download/zip" method="POST">
-        <fieldset>
-            <input type="hidden" name="name" value="geb-demo"/>
-            <input type="hidden" name="packageName" value="com.example"/>
-            <input type="hidden" name="group" value="com.example"/>
-            <input type="hidden" name="artifact" value="geb-demo"/>
-            <input type="hidden" name="version" value="1.0.0"/>
-            <input type="hidden" name="build" value="GRADLE"/>
-            <input type="hidden" name="gradleDsl" value="GROOVY"/>
-            <div>
-                <label>Test Framework: </label>
-                <label for="testFrameworkJunit5">JUnit 5</label>
-                <input id="testFrameworkJunit5" type="radio" name="testFramework" value="JUNIT" checked="checked"/>
-                <label for="testFrameworkSpock">Spock</label><input id="testFrameworkSpock" type="radio" name="testFramework" value="SPOCK">
+<img class="logo" th:src="@{/assets/images/logo.svg}" alt="Geb"/>
+<form th:action="@{/api/v1/download/zip}" method="POST">
+    <fieldset>
+        <legend>Generate Geb Project</legend>
+        <input type="hidden" name="name" value="geb-demo"/>
+        <input type="hidden" name="packageName" value="com.example"/>
+        <input type="hidden" name="group" value="com.example"/>
+        <input type="hidden" name="artifact" value="geb-demo"/>
+        <input type="hidden" name="version" value="1.0.0"/>
+        <input type="hidden" name="build" value="GRADLE"/>
+        <input type="hidden" name="gradleDsl" value="GROOVY"/>
+        <input type="hidden" name="testFramework" value="SPOCK"/>
+        <input type="hidden" name="java" value="17"/>
+        <div id="drivers">
+            <div class="icon">
+                <label for="driverFirefox"><img th:src="@{/assets/images/firefox_512x512.png}" alt="Firefox" width="32"/></label>
+                <input id="driverFirefox" type="checkbox" name="features" value="selenium-firefox-driver" th:checked="${features.contains('selenium-firefox-driver')}"/>
             </div>
-            <div>
-                <label>Browser Driver: </label>
-                <label for="driverFirefox">Firefox</label><input id="driverFirefox" type="checkbox" name="driver" value="FIREFOX"/>
-                <label for="driverChrome">Chrome</label><input id="driverChrome" type="checkbox" name="driver" value="CHROME">
+            <div class="icon">
+                <label for="driverEdge"><img th:src="@{/assets/images/edge_512x512.png}" alt="Edge" width="32"/></label>
+                <input id="driverEdge" type="checkbox" name="features" value="selenium-edge-driver" th:checked="${features.contains('selenium-edge-driver')}"/>
             </div>
-            <input type="hidden" name="java" value="21"/>
-            <input type="submit" value="Download" />
-        </fieldset>
-    </form>
+            <div class="icon">
+                <label for="driverChrome"><img th:src="@{/assets/images/chrome_512x512.png}" alt="Chrome" width="32"/></label>
+                <input id="driverChrome" type="checkbox" name="features" value="selenium-chrome-driver" th:checked="${features.contains('selenium-chrome-driver')}"/>
+            </div>
+            <div class="icon">
+                <label for="driverSafari"><img th:src="@{/assets/images/safari_512x512.png}" alt="Safari" width="32"/></label>
+                <input id="driverSafari" type="checkbox" name="features" value="selenium-safari-driver" th:checked="${features.contains('selenium-safari-driver')}"/>
+            </div>
+        </div>
+        <input type="submit" value="Download" />
+    </fieldset>
+</form>
 </body>
 </html>
