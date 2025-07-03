@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link th:href="@{/assets/bootstrap/5.3.7-dist/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/assets/treeview/treeview.css}" rel="stylesheet"/>
+    <link th:href="@{/assets/prism/1.30.0/prism.css}" rel="stylesheet"/>
+    <script th:src="@{/assets/treeview/treeview.js}"></script>
+    <script th:src="@{/assets/prism/1.30.0/prism.js}"></script>
+    <script th:src="@{/assets/htmx/2.0.4/htmx.min.js}"></script>
+
     <title>Geb Project Generator</title>
     <style>
         .browser-icon {
@@ -37,7 +43,7 @@
             <div class="col-md-8 col-lg-6">
                 <div class="card shadow-sm">
                     <div class="card-body">
-                        <form th:action="@{/api/v1/download/zip}" method="POST">
+                        <form th:action="@{/api/v1/download/zip}" method="post" id="projectGenForm">
                             <h2 class="card-title text-center mb-4">Generate Geb Project</h2>
                             
                             <!-- Hidden inputs -->
@@ -97,13 +103,36 @@
                                 <button type="submit" class="btn btn-primary btn-lg px-5">
                                     <i class="bi bi-download me-2"></i>Download Project
                                 </button>
+
+                                <button
+                                        id="previewBtn"
+                                        name="action"
+                                        value="preview"
+                                        hx-post="/modal/preview"
+                                        hx-include="#projectGenForm"
+                                        hx-target="#preview-modal"
+                                        hx-trigger="click"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#preview-modal"
+                                        class="btn btn-secondary btn-lg px-5">Preview</button>
                             </div>
                         </form>
+                        <div id="preview-modal"
+                             class="modal modal-blur fade"
+                             style="display: none"
+                             aria-hidden="false"
+                             tabindex="-1">
+                            <div class="modal-dialog modal-fullscreen" role="document">
+                                <div class="modal-content"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <script th:src="@{/assets/bootstrap/5.3.7-dist/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/assets/javascripts/utils.js}"></script>
+
 </body>
 </html>

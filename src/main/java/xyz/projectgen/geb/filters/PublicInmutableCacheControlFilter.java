@@ -9,7 +9,8 @@ import io.micronaut.http.filter.FilterPatternStyle;
 
 import java.time.Duration;
 
-@ServerFilter(patternStyle = FilterPatternStyle.REGEX, value = "/assets/(bootstrap|images)/.*")
+@ServerFilter(patternStyle = FilterPatternStyle.REGEX,
+        value = "/assets/(bootstrap|images|prism|htmx|treeview)/.*")
 class PublicInmutableCacheControlFilter {
     @ResponseFilter
     void filterResponse(MutableHttpResponse<?> rsp) {
