@@ -14,11 +14,22 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @MicronautTest
-class LogoTest {
+class BootstrapTest {
+
     @Test
-    void logoRetrieve(@Client("/") HttpClient httpClient) {
+    void testBootstrapJs(@Client("/") HttpClient httpClient) {
         BlockingHttpClient client = httpClient.toBlocking();
-        HttpResponse<?> response = assertDoesNotThrow(() -> client.exchange(HttpRequest.GET("/assets/images/logo.svg")));
+        HttpRequest<?> request = HttpRequest.GET("/assets/bootstrap/5.3.7-dist/js/bootstrap.bundle.min.js");
+        HttpResponse<?> response = assertDoesNotThrow(() -> client.exchange(request));
+        assertTrue(response.getHeaders().get(HttpHeaders.CACHE_CONTROL, String.class).isPresent());
+        assertEquals("public, max-age=31536000, immutable", response.getHeaders().get(HttpHeaders.CACHE_CONTROL));
+    }
+
+    @Test
+    void testBootstrapCss(@Client("/") HttpClient httpClient) {
+        BlockingHttpClient client = httpClient.toBlocking();
+        HttpRequest<?> request = HttpRequest.GET("/assets/bootstrap/5.3.7-dist/css/bootstrap.min.css");
+        HttpResponse<?> response = assertDoesNotThrow(() -> client.exchange(request));
         assertTrue(response.getHeaders().get(HttpHeaders.CACHE_CONTROL, String.class).isPresent());
         assertEquals("public, max-age=31536000, immutable", response.getHeaders().get(HttpHeaders.CACHE_CONTROL));
     }
