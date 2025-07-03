@@ -58,3 +58,8 @@ micronaut {
 tasks.named<io.micronaut.gradle.docker.NativeImageDockerfile>("dockerfileNative") {
     jdkVersion = "24"
 }
+var graalvmVersion  = "24.0.1"
+// https://github.com/graalvm/container/pkgs/container/graalvm-community
+tasks.named<io.micronaut.gradle.docker.MicronautDockerfile>("dockerfile") {
+    baseImage.set("ghcr.io/graalvm/graalvm-community:$graalvmVersion")
+}
