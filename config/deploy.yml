@@ -1,0 +1,23 @@
+service: geb-projectgen
+image: sdelamo/geb-projectgen
+servers:
+  web:
+    - 195.201.0.102
+proxy:
+  ssl: true
+  host: geb.projectgen.xyz
+  healthcheck:
+    path: /health
+  app_port: 8080
+registry:
+  username: sdelamo
+  server: ghcr.io
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+builder:
+  context: build/docker/main
+  dockerfile: build/docker/main/Dockerfile
+  arch: arm64
+env:
+  clear:
+    MICRONAUT_ENVIRONMENTS: kamal
