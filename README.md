@@ -1,5 +1,7 @@
 # Geb Project Generator
 
+Available at: [https://geb.projectgen.xyz/](https://geb.projectgen.xyz/)
+
 ### Micronaut Documentation
 
 - [Micronaut Documentation](https://docs.micronaut.io/latest/guide/index.html)
