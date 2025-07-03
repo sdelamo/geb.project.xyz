@@ -20,6 +20,13 @@ public class GebSpock implements Feature {
             .version(GEB_VERSION)
             .test()
             .build();
+    private static final Dependency DEPENDENCY_GROOVY_BOM = Dependency.builder()
+            .groupId("org.apache.groovy")
+            .artifactId("groovy-bom")
+            .version("4.0.27")
+            .test()
+            .pom()
+            .build();
 
     @Override
     @NonNull
@@ -48,6 +55,7 @@ public class GebSpock implements Feature {
     public void apply(GeneratorContext generatorContext) {
         ModuleContext module = generatorContext.getRootModule();
         module.addDependency(DEPENDENCY_GEB_SPOCK);
+        module.addDependency(DEPENDENCY_GROOVY_BOM);
         module.addTemplate("GebPage.groovy",
                 new StringTemplate("src/test/groovy/com/example/GebPage.groovy", """
             package com.example
